@@ -32,8 +32,11 @@ for pul=1:li;
     f=(1:length(fftdataf))*fe./length(fftdataf);
     t=(1:length(data_f))./fe;
     
-    [apic, fpic, A6dB, ~]=findpeaks(abs(fftdataf),1:length(f),'MinPeakHeight',0.5*max(abs(fftdataf)),'MinPeakProminence',1,'Annotate','extents');%'Threshold',0.5);%max(fftdataf)/2);
-
+    [apict, fpict, A6dBt, ~]=findpeaks(abs(fftdataf),1:length(f),'MinPeakHeight',0.5*max(abs(fftdataf)),'MinPeakProminence',1,'SortStr','descend','Annotate','extents');
+    
+    apic=apict(1);
+    fpic=fpict(1);
+    A6dB=A6dBt(1);
     
     if ~isempty(fpic)
         freq(1,pul)=f(round(fpic(1)));
