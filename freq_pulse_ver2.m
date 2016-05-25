@@ -1,5 +1,24 @@
 function [freq, A6dB, apic, Dfreq]=freq_pulse_ver2(data, echo_win, coeff_nbp, fig)
-%coeff_nbp = coefficient de multiplication du nombre de points temporelles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          Description                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programme permettant de récupérer toutes les données fréquentielles
+% (spectre, bande passante,...)
+% % % % % % % % % % % % % % % Entrées % % % % % % % % % % % % % % % % % % %
+% data : tir à analyser
+% (1 X taille Signal)
+% echo_win : coordonnées des fenêtres des échos à analyser 
+% [debut echo, fin echo]
+% coeff_nbp : coefficient multiplicateur du nombre de points dans un tir
+% (1 X 1)
+% fig : 1 affichage des figures, 0 pas d'affichage.
+% % % % % % % % % % % % % % % Sorties % % % % % % % % % % % % % % % % % % %
+% freq : fréquence du de la fréquence maximale
+% A6dB : largeur à 6dB (mi-hauteur) de la distribution en fréquence
+% apic : l'amplitude de la fréquence maximale.
+% Dfreq : structure comportant toutes les données fréquentielles (spectres,
+% fréquence, phase, ...)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 warning('off')
 
 [li, ~]=size(echo_win);
@@ -41,14 +60,12 @@ end
 if fig==1
     figure;
     plot(t,data_f)
+
     figure;
     plot(f,abs(fftdataf))
-    hold on 
-%     plot(f(locs(1)),abs(fftdataf(locs(1))),'xr')
-    hold off
+
     figure;
     plot(f',unwrap(angle(fftdataf)))
-
 end
 
 end

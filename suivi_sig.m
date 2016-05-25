@@ -1,4 +1,24 @@
 function [tm1n, tz1n]=suivi_sig(S, tm1, tz1, fen)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                          Description                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programme permettant de détecter les points caractéristiques d'un signal
+% (zeros crossing, maximums) à partir des coordonnées de ces points
+% caractéristiques provenant du tir US précédent.
+% % % % % % % % % % % % % % % Entrées % % % % % % % % % % % % % % % % % % %
+% S : le tir où l'on doit détecter les points caractéristiques
+% (1 X taille Signal)
+% tm1 : coordonnées des maximums
+% (1 X n max)
+% tz1 : coordonnées des zeros crossing
+% (1 X n zc)
+% fen : taille de la fenêtre où l'on doit chercher le point
+% caractéristique
+% (1 X 1)
+% % % % % % % % % % % % % % % Sorties % % % % % % % % % % % % % % % % % % %
+% tm1n : nouvelles coordonnées des maximums.
+% tz1n : nouvelles coordonnées des zeros crossing.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 tm1n=NaN(length(tm1),2);
 tz1n=NaN(length(tz1),2);
